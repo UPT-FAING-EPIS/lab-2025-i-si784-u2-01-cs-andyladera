@@ -16,14 +16,13 @@ jobs:
       - name: Instalar .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '9.0.x'  # Asegúrate de que esta versión coincida con tu proyecto
+          dotnet-version: '9.0.x'
 
       - name: Instalar DocFX
         run: |
-          sudo apt-get install unzip -y
-          curl -L -o docfx.zip https://github.com/dotnet/docfx/releases/download/v2.78.3/docfx.zip
-          unzip docfx.zip -d docfx
-          sudo mv docfx/docfx /usr/local/bin/docfx
+          dotnet tool install --global docfx.console --version 2.78.3
+          # Aseguramos que el PATH incluya la ubicación de las herramientas globales de dotnet
+          echo "${HOME}/.dotnet/tools" >> $GITHUB_PATH
 
       - name: Generar documentación
         run: |
