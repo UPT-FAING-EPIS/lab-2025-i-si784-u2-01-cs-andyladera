@@ -21,7 +21,7 @@ jobs:
       - name: Instalar DocFX
         run: |
           sudo apt-get install unzip -y
-          curl -L https://github.com/dotnet/docfx/releases/latest/download/docfx.zip -o docfx.zip
+          curl -LO https://github.com/dotnet/docfx/releases/download/v2.78.3/docfx.zip -o docfx.zip
           unzip docfx.zip -d docfx
           sudo mv docfx/docfx /usr/local/bin/docfx
 
