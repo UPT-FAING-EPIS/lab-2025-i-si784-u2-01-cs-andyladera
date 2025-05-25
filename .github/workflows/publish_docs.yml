@@ -3,7 +3,7 @@ name: Publicar Documentación
 on:
   push:
     branches:
-      - main  # O 'master' según el nombre de tu rama principal
+      - main  # Cambia a 'master' si tu rama principal se llama así
 
 jobs:
   build-docs:
@@ -16,12 +16,12 @@ jobs:
       - name: Instalar .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '9.0.x'  # Asegúrate de usar la misma versión que usas localmente
+          dotnet-version: '9.0.x'  # Asegúrate de que esta versión coincida con tu proyecto
 
       - name: Instalar DocFX
         run: |
           sudo apt-get install unzip -y
-          curl -LO https://github.com/dotnet/docfx/releases/download/v2.78.3/docfx.zip -o docfx.zip
+          curl -L -o docfx.zip https://github.com/dotnet/docfx/releases/download/v2.78.3/docfx.zip
           unzip docfx.zip -d docfx
           sudo mv docfx/docfx /usr/local/bin/docfx
 
