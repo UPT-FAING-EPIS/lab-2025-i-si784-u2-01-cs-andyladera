@@ -20,7 +20,7 @@ namespace Math.Tests //Nombre del namespace
                                                                                         //dentro un margen de error delta
                                                                                         //margen de error 2.0/100 = 0.02
         }
-        
+
         [TestMethod]
         public void RooterValueRange()
         {
@@ -48,6 +48,23 @@ namespace Math.Tests //Nombre del namespace
                 return;
             }
             Assert.Fail();
+        }
+        [TestMethod]
+        public void RooterTestNegativeInputWithMessage()
+        {
+        Rooter rooter = new Rooter();
+
+        try
+        {
+            rooter.SquareRoot(-5);
+        }
+        catch (ArgumentOutOfRangeException ex)
+        {
+            StringAssert.Contains(ex.Message, "El valor ingresado es invalido, solo se puede ingresar números positivos");
+            return;
+        }
+
+        Assert.Fail("Se esperaba una excepción ArgumentOutOfRangeException.");
         }
 
     }
