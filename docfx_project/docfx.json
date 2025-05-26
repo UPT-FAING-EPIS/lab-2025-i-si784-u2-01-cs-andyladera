@@ -15,7 +15,7 @@
       ],
       "dest": "api",
       "properties": {
-        "GenerateDocumentationFile": true
+        "GenerateDocumentationFile": "true"
       }
     }
   ],
