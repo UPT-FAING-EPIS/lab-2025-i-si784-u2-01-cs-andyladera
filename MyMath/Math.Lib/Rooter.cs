@@ -8,18 +8,20 @@ namespace Math.Lib
     public class Rooter
     {
         /// <summary>
-        /// Calcula la raíz cuadrada de un número positivo utilizando el método de Newton-Raphson.
+        /// Calcula la raíz cuadrada de un número no negativo utilizando el método de Newton-Raphson.
         /// </summary>
-        /// <param name="input">Número positivo al que se le desea calcular la raíz cuadrada.</param>
+        /// <param name="input">Número al que se le desea calcular la raíz cuadrada.</param>
         /// <returns>La raíz cuadrada del número de entrada.</returns>
-        /// <exception cref="ArgumentOutOfRangeException">Se lanza cuando el valor ingresado es menor o igual a cero.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">Se lanza cuando el valor ingresado es negativo.</exception>
         public double SquareRoot(double input)
         {
-            if (input <= 0.0)
+            if (input < 0.0)
                 throw new ArgumentOutOfRangeException(
                     paramName: nameof(input), 
                     message: "El valor ingresado es invalido, solo se puede ingresar números positivos");
 
+            if (input == 0.0)
+                return 0.0;
 
             double result = input;
             double previousResult = -input;
