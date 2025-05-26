@@ -3,7 +3,7 @@ name: Release NuGet Package
 on:
   push:
     tags:
-      - 'v*'   # Se activa al hacer push de un tag que comience con 'v'
+      - 'v*'   # Se activa cuando se hace push de un tag como 'v2022074258'
 
 jobs:
   release:
@@ -19,12 +19,15 @@ jobs:
           dotnet-version: '9.0.x'
 
       - name: Restore dependencies
-        run: dotnet restore MyMath/MyMath.sln
+        run: dotnet restore MyMath.sln
 
-      - name: Set version without 'v'
+      - name: Build project
+        run: dotnet build MyMath/Math.Lib/Math.Lib.csproj -c Release
+
+      - name: Set version (strip 'v' from tag)
         run: echo "VERSION=${GITHUB_REF_NAME#v}" >> $GITHUB_ENV
 
-      - name: Build project and create NuGet package
+      - name: Create NuGet package
         run: dotnet pack MyMath/Math.Lib/Math.Lib.csproj -c Release -o ./nupkg /p:PackageVersion=${{ env.VERSION }}
 
       - name: Publish package to GitHub Packages
