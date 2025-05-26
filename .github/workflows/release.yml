@@ -3,7 +3,7 @@ name: Release NuGet Package
 on:
   push:
     tags:
-      - 'v*'   # Se activa cuando se hace push de un tag como 'v2022074258'
+      - 'v*'   # Se activa al hacer push de un tag que comience con 'v'
 
 jobs:
   release:
@@ -24,16 +24,14 @@ jobs:
       - name: Build project
         run: dotnet build MyMath/Math.Lib/Math.Lib.csproj -c Release
 
-      - name: Set version (strip 'v' from tag)
-        run: echo "VERSION=${GITHUB_REF_NAME#v}" >> $GITHUB_ENV
+      - name: Pack NuGet
+        run: dotnet pack MyMath/Math.Lib/Math.Lib.csproj -c Release -o ./MyMath/nupkg /p:PackageVersion=${{ github.ref_name }}
 
       - name: Add GitHub Packages source
         run: dotnet nuget add source https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json --name github --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text
 
       - name: Publish package to GitHub Packages
-        run: dotnet nuget push ./nupkg/*.nupkg --source github --api-key ${{ secrets.GITHUB_TOKEN }}
-        env:
-          NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: dotnet nuget push ./MyMath/nupkg/*.nupkg --source github --api-key ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
