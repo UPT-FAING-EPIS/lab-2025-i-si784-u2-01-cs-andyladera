@@ -3,7 +3,7 @@ name: Publicar Documentación
 on:
   push:
     branches:
-      - main  # O 'master', según tu rama principal
+      - main  # Cambia si tu rama principal es 'master' u otra
 
 jobs:
   build-docs:
@@ -13,26 +13,27 @@ jobs:
       - name: Checkout del código
         uses: actions/checkout@v3
 
-      - name: Instalar .NET
+      - name: Instalar .NET SDK
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '9.0.x'
 
-      - name: Compilar solución con XML Docs
+      - name: Compilar solución con XML Docs habilitados
         run: dotnet build ./MyMath/MyMath.sln --configuration Release
 
-      - name: Instalar DocFX
+      - name: Instalar DocFX globalmente
         run: |
           dotnet tool install --global docfx
           echo "${HOME}/.dotnet/tools" >> $GITHUB_PATH
 
-      - name: Generar documentación
+      - name: Generar documentación con DocFX
         run: |
           cd docfx_project
           docfx build
 
-      - name: Publicar en GitHub Pages
+      - name: Publicar documentación en GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docfx_project/_site
+          publish_branch: gh-pages   # Opcional: define la rama donde se publicará la documentación

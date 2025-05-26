@@ -6,11 +6,6 @@
           "cwd": "../MyMath/Math.Lib",
           "files": [ "Math.Lib.csproj" ],
           "exclude": [ "**/bin/**", "**/obj/**" ]
-        },
-        {
-          "cwd": "../MyMath/Math.Tests",
-          "files": [ "Math.Tests.csproj" ],
-          "exclude": [ "**/bin/**", "**/obj/**" ]
         }
       ],
       "dest": "api",
@@ -32,6 +27,9 @@
     "globalMetadata": {
       "_appTitle": "MyMath Library",
       "_enableSearch": true
-    }
+    },
+    "template": [
+      "default"
+    ]
   }
 }
