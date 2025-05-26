@@ -23,7 +23,7 @@ jobs:
         working-directory: ./MyMath
 
       - name: Ejecutar pruebas con cobertura
-        run: dotnet test --collect:"XPlat Code Coverage"
+        run: dotnet test MyMath.sln --collect:"XPlat Code Coverage"
 
       - name: Instalar ReportGenerator
         run: dotnet tool install --global dotnet-reportgenerator-globaltool
