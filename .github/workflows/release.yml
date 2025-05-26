@@ -19,7 +19,7 @@ jobs:
           dotnet-version: '9.0.x'
 
       - name: Restore dependencies
-        run: dotnet restore MyMath.sln
+        run: dotnet restore MyMath/MyMath.sln
 
       - name: Build project
         run: dotnet build MyMath/Math.Lib/Math.Lib.csproj -c Release
