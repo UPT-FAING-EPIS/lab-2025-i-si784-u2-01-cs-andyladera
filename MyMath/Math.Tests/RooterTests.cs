@@ -83,5 +83,15 @@ namespace Math.Tests
 
             Assert.Fail("Se esperaba una excepción ArgumentOutOfRangeException.");
         }
+        /// <summary>
+        /// Verifica que SquareRoot retorne 0 cuando la entrada es 0.
+        /// </summary>
+        [TestMethod]
+        public void RooterTestZeroInput()
+        {
+            Rooter rooter = new Rooter();
+            double actualResult = rooter.SquareRoot(0);
+            Assert.AreEqual(0, actualResult, delta: 0.0001);
+        }
     }
 }
