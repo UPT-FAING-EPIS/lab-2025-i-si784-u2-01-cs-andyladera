@@ -20,8 +20,7 @@ jobs:
 
       - name: Instalar DocFX
         run: |
-          dotnet tool install --global docfx.console --version 2.78.3
-          # Aseguramos que el PATH incluya la ubicación de las herramientas globales de dotnet
+          dotnet tool install --global docfx
           echo "${HOME}/.dotnet/tools" >> $GITHUB_PATH
 
       - name: Generar documentación
