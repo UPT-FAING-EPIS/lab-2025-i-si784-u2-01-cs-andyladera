@@ -4,9 +4,19 @@
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <!--Según la IA para generar archivo XML de documentación-->
+
+    <!-- Generar archivo XML de documentación -->
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <NoWarn>1591</NoWarn> <!-- Opcional: para evitar warnings por documentación faltante -->
+    <NoWarn>1591</NoWarn>
+
+    <!-- Configuración NuGet -->
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>  
+    <PackageId>MyMath</PackageId>                           
+    <Version>2022074258</Version>                          
+    <Authors>Andy Ladera</Authors>                         
+    <Company>UPT-FAING-EPIS</Company>
+    <Description>Librería matemática para MyMath</Description>
+    <RepositoryUrl>https://github.com/UPT-FAING-EPIS/lab-2025-i-si784-u2-01-cs-andyladera</RepositoryUrl> 
   </PropertyGroup>
 
 </Project>
