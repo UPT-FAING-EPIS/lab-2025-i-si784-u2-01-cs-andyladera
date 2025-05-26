@@ -1,26 +1,30 @@
-//RooterTests.cs es un archivo de prueba unitaria utilizando MSTest
-// ---
-//Espacio de nombres para poder usar las clases y atributos de MSTest
-using Microsoft.VisualStudio.TestTools.UnitTesting; 
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Math.Lib;
 
-namespace Math.Tests //Nombre del namespace
+namespace Math.Tests
 {
-    [TestClass] //Indica que la clase contiene métodos de prueba
-    public class RooterTests //Clase de prueba
+    /// <summary>
+    /// Contiene pruebas unitarias para verificar el funcionamiento de la clase <see cref="Rooter"/>.
+    /// </summary>
+    [TestClass]
+    public class RooterTests
     {
-        [TestMethod] //Indica que el siguiente método es una prueba unitaria individual ejecutada por MSTest
+        /// <summary>
+        /// Prueba básica para verificar que SquareRoot retorna el valor esperado para una entrada conocida.
+        /// </summary>
+        [TestMethod]
         public void BasicRooterTest()
         {
-            Rooter rooter = new Rooter(); //Instancia de clase Rooter
-            double expectedResult = 2.0; //valor esperado
+            Rooter rooter = new Rooter();
+            double expectedResult = 2.0;
             double input = expectedResult * expectedResult;
-            double actualResult = rooter.SquareRoot(input); //Llama al método SqueareRoot con el valor 4.0
-            Assert.AreEqual(expectedResult, actualResult, delta: expectedResult / 100); //Verifica que expectedResult sea igual a actualResult
-                                                                                        //dentro un margen de error delta
-                                                                                        //margen de error 2.0/100 = 0.02
+            double actualResult = rooter.SquareRoot(input);
+            Assert.AreEqual(expectedResult, actualResult, delta: expectedResult / 100);
         }
 
+        /// <summary>
+        /// Prueba la función SquareRoot con una amplia gama de valores de entrada.
+        /// </summary>
         [TestMethod]
         public void RooterValueRange()
         {
@@ -28,6 +32,12 @@ namespace Math.Tests //Nombre del namespace
             for (double expected = 1e-8; expected < 1e+8; expected *= 3.2)
                 RooterOneValue(rooter, expected);
         }
+
+        /// <summary>
+        /// Método auxiliar que verifica la raíz cuadrada de un solo valor.
+        /// </summary>
+        /// <param name="rooter">Instancia de la clase Rooter.</param>
+        /// <param name="expectedResult">El valor cuya raíz cuadrada se desea comprobar.</param>
         private void RooterOneValue(Rooter rooter, double expectedResult)
         {
             double input = expectedResult * expectedResult;
@@ -35,6 +45,9 @@ namespace Math.Tests //Nombre del namespace
             Assert.AreEqual(expectedResult, actualResult, delta: expectedResult / 1000);
         }
 
+        /// <summary>
+        /// Verifica que se lance una excepción al ingresar un número negativo.
+        /// </summary>
         [TestMethod]
         public void RooterTestNegativeInputx()
         {
@@ -49,23 +62,26 @@ namespace Math.Tests //Nombre del namespace
             }
             Assert.Fail();
         }
+
+        /// <summary>
+        /// Verifica que el mensaje de la excepción por entrada negativa sea el esperado.
+        /// </summary>
         [TestMethod]
         public void RooterTestNegativeInputWithMessage()
         {
-        Rooter rooter = new Rooter();
+            Rooter rooter = new Rooter();
 
-        try
-        {
-            rooter.SquareRoot(-5);
-        }
-        catch (ArgumentOutOfRangeException ex)
-        {
-            StringAssert.Contains(ex.Message, "El valor ingresado es invalido, solo se puede ingresar números positivos");
-            return;
-        }
+            try
+            {
+                rooter.SquareRoot(-5);
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                StringAssert.Contains(ex.Message, "El valor ingresado es invalido, solo se puede ingresar números positivos");
+                return;
+            }
 
-        Assert.Fail("Se esperaba una excepción ArgumentOutOfRangeException.");
+            Assert.Fail("Se esperaba una excepción ArgumentOutOfRangeException.");
         }
-
     }
 }

@@ -3,24 +3,35 @@
     {
       "src": [
         {
-          "files": [ "../Math.Lib/Math.Lib.csproj" ]
+          "cwd": "../MyMath/Math.Lib",
+          "files": [ "Math.Lib.csproj" ],
+          "exclude": [ "**/bin/**", "**/obj/**" ]
+        },
+        {
+          "cwd": "../MyMath/Math.Tests",
+          "files": [ "Math.Tests.csproj" ],
+          "exclude": [ "**/bin/**", "**/obj/**" ]
         }
       ],
-      "dest": "api"
+      "dest": "api",
+      "properties": {
+        "GenerateDocumentationFile": true
+      }
     }
   ],
   "build": {
     "content": [
       {
-        "files": [ "**/*.md", "api/**.yml" ]
+        "files": [ "**/*.md" ]
+      },
+      {
+        "files": [ "api/**.yml" ]
       }
     ],
     "dest": "_site",
     "globalMetadata": {
-      "_appTitle": "MyMath Documentation"
-    },
-    "template": [
-      "default"
-    ]
+      "_appTitle": "MyMath Library",
+      "_enableSearch": true
+    }
   }
 }

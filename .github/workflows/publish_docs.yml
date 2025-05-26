@@ -3,7 +3,7 @@ name: Publicar Documentación
 on:
   push:
     branches:
-      - main  # Cambia a 'master' si tu rama principal se llama así
+      - main
 
 jobs:
   build-docs:
@@ -17,6 +17,9 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '9.0.x'
+
+      - name: Compilar proyecto con XML Docs
+        run: dotnet build --configuration Release
 
       - name: Instalar DocFX
         run: |
