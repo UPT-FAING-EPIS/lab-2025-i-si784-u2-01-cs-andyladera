@@ -3,7 +3,7 @@ name: Publicar Documentación
 on:
   push:
     branches:
-      - main
+      - main  # O 'master', según tu rama principal
 
 jobs:
   build-docs:
@@ -18,8 +18,8 @@ jobs:
         with:
           dotnet-version: '9.0.x'
 
-      - name: Compilar proyecto con XML Docs
-        run: dotnet build --configuration Release
+      - name: Compilar solución con XML Docs
+        run: dotnet build ./MyMath/MyMath.sln --configuration Release
 
       - name: Instalar DocFX
         run: |
