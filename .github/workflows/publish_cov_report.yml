@@ -19,11 +19,10 @@ jobs:
           dotnet-version: '9.0.x'
 
       - name: Restaurar dependencias
-        run: dotnet restore
-        working-directory: ./MyMath
+        run: dotnet restore MyMath/MyMath.sln
 
       - name: Ejecutar pruebas con cobertura
-        run: dotnet test MyMath.sln --collect:"XPlat Code Coverage"
+        run: dotnet test MyMath/MyMath.sln --collect:"XPlat Code Coverage"
 
       - name: Instalar ReportGenerator
         run: dotnet tool install --global dotnet-reportgenerator-globaltool
