@@ -1,0 +1,42 @@
+{
+  "api/index.html": {
+    "href": "api/index.html",
+    "title": "PLACEHOLDER | MyMath Library",
+    "summary": "PLACEHOLDER TODO: Add .NET projects to the src folder and run docfx to generate REAL API Documentation!"
+  },
+  "articles/intro.html": {
+    "href": "articles/intro.html",
+    "title": "Add your introductions here! | MyMath Library",
+    "summary": "Add your introductions here!"
+  },
+  "articles/overview.html": {
+    "href": "articles/overview.html",
+    "title": "Documentación MyMath | MyMath Library",
+    "summary": "Documentación MyMath Este proyecto contiene la librería Math.Lib con clases para operaciones matemáticas. Clases Rooter: Clase que calcula raíces cuadradas usando un método numérico."
+  },
+  "docfx_project/api/index.html": {
+    "href": "docfx_project/api/index.html",
+    "title": "PLACEHOLDER | MyMath Library",
+    "summary": "PLACEHOLDER TODO: Add .NET projects to the src folder and run docfx to generate REAL API Documentation!"
+  },
+  "docfx_project/articles/intro.html": {
+    "href": "docfx_project/articles/intro.html",
+    "title": "Add your introductions here! | MyMath Library",
+    "summary": "Add your introductions here!"
+  },
+  "docfx_project/articles/overview.html": {
+    "href": "docfx_project/articles/overview.html",
+    "title": "Documentación MyMath | MyMath Library",
+    "summary": "Documentación MyMath Este proyecto contiene la librería Math.Lib con clases para operaciones matemáticas. Clases Rooter: Clase que calcula raíces cuadradas usando un método numérico."
+  },
+  "docfx_project/index.html": {
+    "href": "docfx_project/index.html",
+    "title": "This is the HOMEPAGE. | MyMath Library",
+    "summary": "This is the HOMEPAGE. Refer to Markdown for how to write markdown files. Quick Start Notes: Add images to the images folder if the file is referencing an image."
+  },
+  "index.html": {
+    "href": "index.html",
+    "title": "This is the HOMEPAGE. | MyMath Library",
+    "summary": "This is the HOMEPAGE. Refer to Markdown for how to write markdown files. Quick Start Notes: Add images to the images folder if the file is referencing an image."
+  }
+}
