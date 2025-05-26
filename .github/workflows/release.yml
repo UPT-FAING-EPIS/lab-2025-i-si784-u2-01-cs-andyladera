@@ -18,14 +18,18 @@ jobs:
         with:
           dotnet-version: '9.0.x'
 
+      - name: Extract version number (remove leading 'v')
+        id: vars
+        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_ENV
+
       - name: Restore dependencies
         run: dotnet restore MyMath/MyMath.sln
 
       - name: Build project
         run: dotnet build MyMath/Math.Lib/Math.Lib.csproj -c Release
 
-      - name: Pack NuGet
-        run: dotnet pack MyMath/Math.Lib/Math.Lib.csproj -c Release -o ./MyMath/nupkg /p:PackageVersion=${{ github.ref_name }}
+      - name: Pack NuGet package
+        run: dotnet pack MyMath/Math.Lib/Math.Lib.csproj -c Release -o ./MyMath/nupkg /p:PackageVersion=$VERSION
 
       - name: Add GitHub Packages source
         run: dotnet nuget add source https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json --name github --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text
