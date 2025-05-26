@@ -20,6 +20,7 @@ jobs:
 
       - name: Restaurar dependencias
         run: dotnet restore
+        working-directory: ./MyMath
 
       - name: Ejecutar pruebas con cobertura
         run: dotnet test --collect:"XPlat Code Coverage"
