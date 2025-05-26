@@ -15,7 +15,7 @@ namespace Math.Lib
         /// <exception cref="ArgumentOutOfRangeException">Se lanza cuando el valor ingresado es menor o igual a cero.</exception>
         public double SquareRoot(double input)
         {
-            if (input < 0.0)
+            if (input <= 0.0)
                 throw new ArgumentOutOfRangeException(
                     paramName: nameof(input), 
                     message: "El valor ingresado es invalido, solo se puede ingresar números positivos");
