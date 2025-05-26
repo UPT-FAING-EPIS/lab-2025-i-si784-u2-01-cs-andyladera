@@ -22,7 +22,7 @@ jobs:
         run: dotnet restore MyMath/MyMath.sln
 
       - name: Ejecutar pruebas con cobertura
-        run: dotnet test MyMath/MyMath.sln --collect:"XPlat Code Coverage"
+        run: dotnet test MyMath/MyMath.sln --configuration Release --collect:"XPlat Code Coverage"
 
       - name: Instalar ReportGenerator
         run: dotnet tool install --global dotnet-reportgenerator-globaltool
@@ -37,9 +37,9 @@ jobs:
             -targetdir:coveragereport \
             -reporttypes:Html
 
-      - name: Publicar reporte en GitHub Pages (subcarpeta)
+      - name: Publicar reporte en GitHub Pages (subcarpeta /coverage)
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./coveragereport
-          destination_dir: coverage
+          destination_dir: coverage  # Esto crea la ruta https://<usuario>.github.io/<repo>/coverage
