@@ -1,5 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Math.Lib;
+using System.Globalization;
+using System.Threading;
 
 namespace Math.Tests
 {
@@ -9,11 +11,18 @@ namespace Math.Tests
     [TestClass]
     public class RooterTests
     {
+        [ClassInitialize]
+        public static void ClassInit(TestContext context)
+        {
+            Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
+            Thread.CurrentThread.CurrentUICulture = CultureInfo.InvariantCulture;
+        }
 
         [TestMethod]
         public void TestMethod1()
         {
         }
+
         /// <summary>
         /// Prueba básica para verificar que SquareRoot retorna el valor esperado para una entrada conocida.
         /// </summary>
