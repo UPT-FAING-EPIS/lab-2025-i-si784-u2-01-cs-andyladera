@@ -1,0 +1,45 @@
+name: Publicar Cobertura
+
+on:
+  push:
+    branches:
+      - main  # O 'master', si es tu rama principal
+
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v3
+
+      - name: Instalar .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Restaurar dependencias
+        run: dotnet restore
+
+      - name: Ejecutar pruebas con cobertura
+        run: dotnet test --collect:"XPlat Code Coverage"
+
+      - name: Instalar ReportGenerator
+        run: dotnet tool install --global dotnet-reportgenerator-globaltool
+
+      - name: Agregar tools al PATH
+        run: echo "${HOME}/.dotnet/tools" >> $GITHUB_PATH
+
+      - name: Generar reporte de cobertura
+        run: |
+          reportgenerator \
+            -reports:**/coverage.cobertura.xml \
+            -targetdir:coveragereport \
+            -reporttypes:Html
+
+      - name: Publicar reporte en GitHub Pages (subcarpeta)
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./coveragereport
+          destination_dir: coverage
