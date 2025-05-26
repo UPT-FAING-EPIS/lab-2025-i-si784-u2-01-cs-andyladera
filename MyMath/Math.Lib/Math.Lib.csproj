@@ -12,7 +12,7 @@
     <!-- Configuración NuGet -->
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>  
     <PackageId>MyMath</PackageId>                           
-    <Version>2022074258</Version>                          
+    <Version>$(PackageVersion)</Version>                         
     <Authors>Andy Ladera</Authors>                         
     <Company>UPT-FAING-EPIS</Company>
     <Description>Librería matemática para MyMath</Description>

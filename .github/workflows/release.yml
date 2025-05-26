@@ -1,32 +1,37 @@
-name: Release NuGet
+name: Release NuGet Package
 
 on:
   push:
     tags:
-      - 'v2022074258'  # Tag con tu código de matrícula
+      - 'v*'   # Se activa al hacer push de un tag que comience con 'v'
 
 jobs:
   release:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout del código
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Instalar .NET
+      - name: Setup .NET SDK
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '9.0.x'
 
-      - name: Compilar y generar paquete NuGet
-        run: dotnet pack MyMath/Math.Lib/Math.Lib.csproj --configuration Release -p:PackageVersion=2022074258
+      - name: Restore dependencies
+        run: dotnet restore MyMath.sln
 
-      - name: Publicar en GitHub Packages
-        run: dotnet nuget push **/MyMath.*.nupkg --source "github" --api-key ${{ secrets.GITHUB_TOKEN }}
+      - name: Build project and create NuGet package
+        run: dotnet pack MyMath/Math.Lib/Math.Lib.csproj -c Release -o ./nupkg /p:PackageVersion=${{ github.ref_name }}
+
+      - name: Publish package to GitHub Packages
+        run: dotnet nuget push ./nupkg/*.nupkg --source "github" --api-key ${{ secrets.GITHUB_TOKEN }}
         env:
           NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Crear Release
+      - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: v2022074258
+          tag_name: ${{ github.ref_name }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
