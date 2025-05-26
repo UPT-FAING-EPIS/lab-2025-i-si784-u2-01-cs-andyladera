@@ -11,11 +11,42 @@
       }
     },
     {
-      "type": "Conceptual",
-      "source_relative_path": "api/index.md",
+      "type": "ManagedReference",
+      "source_relative_path": "api/Math.Lib.Rooter.yml",
       "output": {
         ".html": {
-          "relative_path": "api/index.html"
+          "relative_path": "api/Math.Lib.Rooter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Math.Lib.Rooter",
+      "Summary": "<p sourcefile=\"api/Math.Lib.Rooter.yml\" sourcestartlinenumber=\"2\">Proporciona operaciones matemáticas relacionadas con raíces cuadradas.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Math.Lib.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Math.Lib.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Math.Lib",
+      "Summary": null
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
         }
       },
       "version": ""
@@ -36,46 +67,6 @@
       "output": {
         ".html": {
           "relative_path": "articles/overview.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "docfx_project/api/index.md",
-      "output": {
-        ".html": {
-          "relative_path": "docfx_project/api/index.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "docfx_project/articles/intro.md",
-      "output": {
-        ".html": {
-          "relative_path": "docfx_project/articles/intro.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "docfx_project/articles/overview.md",
-      "output": {
-        ".html": {
-          "relative_path": "docfx_project/articles/overview.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "docfx_project/index.md",
-      "output": {
-        ".html": {
-          "relative_path": "docfx_project/index.html"
         }
       },
       "version": ""
