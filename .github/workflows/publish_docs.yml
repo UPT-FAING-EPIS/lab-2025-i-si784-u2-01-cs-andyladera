@@ -37,3 +37,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docfx_project/_site
           publish_branch: gh-pages   # Opcional: define la rama donde se publicará la documentación
+          keep_files: true  # Mantener archivos existentes para no sobrescribir el reporte de cobertura

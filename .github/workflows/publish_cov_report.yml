@@ -43,3 +43,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./coveragereport
           destination_dir: coverage  # Esto crea la ruta https://<usuario>.github.io/<repo>/coverage
+          keep_files: true  # Mantener archivos existentes para no sobrescribir la documentación
